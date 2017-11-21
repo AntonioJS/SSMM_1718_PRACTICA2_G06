@@ -256,7 +256,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     private void showAppointmentsScreen() {
-        startActivity(new Intent(this,MainActivity.class));
+        startActivity(new Intent(this,redireccion.class));
     }
 
     private void showLoginError(String error) {
