@@ -34,6 +34,10 @@
         <activity
             android:name=".redireccion"
             android:label="@string/title_activity_redireccion"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Redireccion"
+            android:label="@string/title_activity_redireccion"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
