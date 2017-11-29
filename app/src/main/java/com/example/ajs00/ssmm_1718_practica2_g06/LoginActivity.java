@@ -39,6 +39,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.http.GET;
+import retrofit2.http.Path;
+
 import static android.Manifest.permission.READ_CONTACTS;
 import static com.example.ajs00.ssmm_1718_practica2_g06.R.layout.activity_main;
 
