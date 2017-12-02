@@ -3,14 +3,16 @@ package com.example.ajs00.ssmm_1718_practica2_g06;
 /**
  * Created by usuario on 29/11/2017.
  */
-
+//Aquí colocamos como viene la respuesta.
 class ResponsePost {
     private String name;
     private String consulta;
 
-    public RequestPost(){}
+    public class ResponsePost(){
 
-    public RequestPost(String name, String consulta){
+    }
+
+    public ResponsePost(String name, String consulta){
         this.name = name;
         this.consulta = consulta;
     }

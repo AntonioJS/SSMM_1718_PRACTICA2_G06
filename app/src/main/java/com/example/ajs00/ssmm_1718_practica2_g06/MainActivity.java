@@ -1,14 +1,23 @@
 package com.example.ajs00.ssmm_1718_practica2_g06;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.io.IOException;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +42,41 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        new Peticion().execute();
     }
+//<>
+    public static class Peticion extends AsyncTask<Void,Void,Void>{
+    @Override
+    protected Void doInBackground (Void... voids){
+        //URL
+        final String url= "http://www4.ujaen.es/~jccuevas/ssmm/"; //colocamos la url del servicio.
+        //OBJETO RETROFIT INICIALIZADO
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        //Llamada de la interface.
+       SOService service = retrofit.create(SOService.class);
+        //Manda a llamar el getusersget de la clase interface.
+        Call<List<ResponsePost>> response = service.getUsersGet();
+
+        try {
+
+            for (ResponsePost user : response.execute().body()) {
+                Log.e("Respuesta: ",user.getName()+" ");
+
+            }
+
+
+        }catch(IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+        }
+    }
+
+
+}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
