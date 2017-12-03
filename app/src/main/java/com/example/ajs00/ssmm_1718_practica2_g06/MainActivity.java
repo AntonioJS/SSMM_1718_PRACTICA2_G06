@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-        new Peticion().execute();
+        //new Peticion().execute();
     }
 //<>
     public static class Peticion extends AsyncTask<Void,Void,Void>{
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-}
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
