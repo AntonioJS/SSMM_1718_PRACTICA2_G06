@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -36,6 +37,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,6 +72,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        final Context context=this;
+        SharedPreferences sharprefs = getSharedPreferences("ArchivoSP",context.MODE_PRIVATE);
         // Set up the login form.
         mUser_id = (AutoCompleteTextView) findViewById(R.id.user_id);
         mImagen = (ImageView) findViewById(R.id.Imagen);
@@ -97,6 +102,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mLogin_button.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+                SharedPreferences sharpref = getPreferences(context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharpref.edit();
+                editor.putString("Midato",mUser_id.getText().toString());
                 if (!isOnline()) {
                     showLoginError(getString(R.string.error_field_required));
                     return;
